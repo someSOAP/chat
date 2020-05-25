@@ -1,0 +1,43 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "simple js chat ",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/someSOAP/chat.git"
+  },
+  "keywords": [
+    "chat",
+    "nodejs",
+    "react",
+    "js",
+    "crud"
+  ],
+  "author": "someSOAP",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/someSOAP/chat/issues"
+  },
+  "homepage": "https://github.com/someSOAP/chat#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.6",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.1.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.20.2",
+    "nodemon": "^2.0.4"
+  }
+}
