@@ -1,30 +1,58 @@
 import "reflect-metadata";
 import 'dotenv/config';
-// import cors from "cors";
 import { createConnection } from "typeorm";
-import { Request, Response } from "express";
 import express from "express";
-import bodyParser from "body-parser";
-import { AppRoutes } from "./routes";
+import expressWs from 'express-ws';
+import { saveMessage, getAllMessages } from './controller/MessageSaveAction'
 
 // create connection with database
 // note that it's not active database connection
 // TypeORM creates connection pools and uses them for your requests
-createConnection().then(async connection => {
+createConnection().then(async () => {
 
     // create express app
-    const app = express();
-    // app.use(cors());
-    app.use(bodyParser.json());
+    const { app, getWss, applyTo } = expressWs(express());
 
-    // register all application routes
-    AppRoutes.forEach(route => {
-        app[route.method](route.path, (request: Request, response: Response, next: Function) => {
-            route.action(request, response)
-                .then(() => next)
-                .catch(err => next(err));
+    applyTo(express.Router());
+
+    getWss().clients.forEach(ws => {
+        if (ws.readyState !== ws.OPEN) {
+            ws.terminate();
+            return;
+        }
+        ws.ping();
+    });
+
+    app.ws('/chat', ws => {
+        ws.on('message', async (msg) => {
+            const res = await saveMessage(msg);
+            getWss().clients.forEach(client => {
+                client.send(JSON.stringify(res));
+            });
         });
     });
+
+    app.get('/messages', async (req, res, ) => {
+        const messages = await getAllMessages();
+        res.send(messages);
+    });
+
+    const router = express.Router() as expressWs.Router;
+
+    router.ws(
+        '/:id',
+        (ws, req, next) => { next(); },
+        (ws, req) => {
+            ws.send(req.params.id);
+
+            ws.on('close', (code, reason) => {
+                console.log('code:', code);
+                console.log('reason:', reason);
+            });
+        }
+    );
+
+    app.use(router);
 
     // run app
     const PORT = process.env.PORT || 3000;
