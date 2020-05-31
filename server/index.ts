@@ -4,6 +4,12 @@ import { createConnection } from "typeorm";
 import express from "express";
 import expressWs from 'express-ws';
 import { saveMessage, getAllMessages } from './controller/MessageController'
+import * as path from "path";
+import * as fs from "fs";
+
+import * as React from "react";
+import * as ReactDOMServer  from "react-dom/server";
+import { App } from '../front/App'
 
 // create connection with database
 // note that it's not active database connection
@@ -52,7 +58,22 @@ createConnection().then(async () => {
         }
     );
 
+
+    app.get("/", (req, res) => {
+        const indexFile = path.resolve(
+            __dirname,
+            "../front/index.html"
+        );
+
+        fs.readFile(indexFile, "utf8", (err, data) => {
+            return res.send(data);
+        });
+    });
+
+
+
     app.use(router);
+    app.use('/static', express.static( path.resolve(__dirname, '../dist')));
 
     // run app
     const PORT = process.env.PORT || 3000;

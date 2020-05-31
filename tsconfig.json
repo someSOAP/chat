@@ -2,13 +2,18 @@
   "version": "2.4.2",
   "compilerOptions": {
     "esModuleInterop": true,
-    "lib": ["es5", "es6"],
+    "lib": [
+      "es5",
+      "es6",
+      "dom"
+    ],
     "target": "es6",
     "module": "commonjs",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "jsx": "react"
   },
   "exclude": [
     "node_modules"
