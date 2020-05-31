@@ -3,7 +3,7 @@ import 'dotenv/config';
 import { createConnection } from "typeorm";
 import express from "express";
 import expressWs from 'express-ws';
-import { saveMessage, getAllMessages } from './controller/MessageSaveAction'
+import { saveMessage, getAllMessages } from './controller/MessageController'
 
 // create connection with database
 // note that it's not active database connection
