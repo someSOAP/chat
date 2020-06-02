@@ -5,7 +5,7 @@ const { Header } = Layout ;
 export const AppHeader = () => {
     return (
         <Header style={{ width: '100%', color: "white" }}>
-            Chat available by <a href={process.env.URL_API}>Link</a>
+            Chat available by <a href={`http://${process.env.URL_API}`}>Link</a>
         </Header>
     )
 };
