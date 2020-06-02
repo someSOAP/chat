@@ -7,7 +7,7 @@ const ip = require("ip");
 module.exports = (env) => {
 
     return {
-        mode: "production",
+        mode: "development",
 
         // Enable sourcemaps for debugging webpack's output.
         devtool: "source-map",

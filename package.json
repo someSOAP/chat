@@ -6,11 +6,11 @@
   "author": "someSOAP",
   "license": "ISC",
   "scripts": {
-    "start": "nodemon --exec \"npm run runapp\" ",
-    "runapp": "ts-node server/index.ts",
-    "build:front": "webpack --config webpack.config.js",
-    "runwithfront": "npm run build:front  && npm run runapp",
-    "tsc": "tsc"
+    "start": "ts-node server/index.ts",
+    "dev": "npm run dev:server && npm run dev:front",
+    "dev:server": "nodemon --exec \"npm start\" --watch server",
+    "dev:front": "nodemon --exec \" npm run build\" --watch front",
+    "build": "webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -53,7 +53,7 @@
   },
   "nodemonConfig": {
     "restartable": "rs",
-    "ext": "ts",
+    "ext": "ts,tsx,html",
     "ignore": [
       "test/*",
       "docs/*",
