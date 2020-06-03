@@ -1,12 +1,18 @@
 import * as React from "react";
 import { Comment } from 'antd';
 
-export const Message = ({title, text}) => {
+export interface MessageProps {
+    title: string,
+    text:  string,
+    msgRef:   React.Ref<HTMLDivElement>
+}
+
+export const Message = ({text, title, msgRef}: MessageProps) => {
     return (
         <Comment
-            author={<h6>{title}</h6>}
+            author={<h5>{title}</h5>}
             content={
-                <p>{text}</p>
+                <p ref={msgRef}>{text}</p>
             }
         />
     )

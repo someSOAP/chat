@@ -4,12 +4,17 @@ import Message from "./Message";
 
 const { Content } = Layout ;
 
-export const AppContent = ({messages}) => {
+export const AppContent = ({messages, msgRef}) => {
     return (
-        <Content style={{height: "100%", overflow: "auto"}}>
+        <Content style={{height: "100%", overflow: "auto"}} >
             {
-                messages.map((msg)=>(
-                    <Message text={msg.text} title={msg.title} key={msg.id}/>
+                messages.map(({text, title, id}, index)=>(
+                    <Message
+                        text={text}
+                        title={title}
+                        key={id}
+                        msgRef={index === messages.length-1 ? msgRef : null}
+                    />
                 ))
             }
         </Content>

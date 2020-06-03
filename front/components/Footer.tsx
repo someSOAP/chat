@@ -3,7 +3,13 @@ import {Input, Layout} from "antd";
 
 const { Footer } = Layout ;
 
-export const AppContent = ({socket, onChange, input}) => {
+export interface AppContentProps {
+    socket: WebSocket,
+    onChange: Function,
+    input: string
+}
+
+export const AppContent = ({socket, onChange, input} : AppContentProps) => {
     return (
         <Footer style={{ width: '100%' }}>
             <Input
@@ -11,11 +17,8 @@ export const AppContent = ({socket, onChange, input}) => {
                     onChange(target.value)
                 }}
                 value={input}
-                onPressEnter = {(event)=>{
-                    debugger;
+                onPressEnter = {()=>{
                     socket.send(JSON.stringify({title: "Name", text: input }));
-                    onChange("");
-                    console.log(event);
                 }}
             />
         </Footer>
