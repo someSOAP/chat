@@ -1,13 +1,14 @@
 import "reflect-metadata";
 import 'dotenv/config';
 import { createConnection } from "typeorm";
+import ip from 'ip';
 import express from "express";
 import expressWs from 'express-ws';
 import { saveMessage, getAllMessages } from './controller/MessageController'
+import * as path from "path";
+import * as fs from "fs";
 
-// create connection with database
-// note that it's not active database connection
-// TypeORM creates connection pools and uses them for your requests
+
 createConnection().then(async () => {
 
     // create express app
@@ -52,11 +53,27 @@ createConnection().then(async () => {
         }
     );
 
+
+    app.get("/", (req, res) => {
+        const indexFile = path.resolve(
+            __dirname,
+            "../front/index.html"
+        );
+
+        fs.readFile(indexFile, "utf8", (err, data) => {
+            return res.send(data);
+        });
+    });
+
+
+
     app.use(router);
+    app.use('/static', express.static( path.resolve(__dirname, '../dist')));
 
     // run app
+    const IP = ip.address();
     const PORT = process.env.PORT || 3000;
     app.listen(PORT);
-    console.log(`Express application is up and running on port ${PORT}`);
+    console.log(`Chat avaliable by link http://${IP}:${PORT} `);
 
 }).catch(error => console.log("TypeORM connection error: ", error));

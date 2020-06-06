@@ -7,17 +7,17 @@
   "password": "test",
   "synchronize": true,
   "entities": [
-    "src/entity/*.js"
+    "server/entity/*.js"
   ],
   "subscribers": [
-    "src/subscriber/*.ts"
+    "server/subscriber/*.ts"
   ],
   "migrations": [
-    "src/migration/*.ts"
+    "server/migration/*.ts"
   ],
   "cli": {
-    "entitiesDir": "src/entity",
-    "migrationsDir": "src/migration",
-    "subscribersDir": "src/subscriber"
+    "entitiesDir": "server/entity",
+    "migrationsDir": "server/migration",
+    "subscribersDir": "server/subscriber"
   }
 }
