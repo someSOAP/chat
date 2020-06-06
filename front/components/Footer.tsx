@@ -19,6 +19,7 @@ export const AppContent : React.FC<AppContentProps> = ({socket, onChange, input}
                 value={input}
                 onPressEnter = {()=>{
                     socket.send(JSON.stringify({title: "Name", text: input}));
+                    onChange("")
                 }}
             />
         </Footer>

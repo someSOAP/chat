@@ -1,7 +1,8 @@
 import * as React from "react";
 import { Layout } from 'antd';
 import Header from './components/Header'
-import Content from './components/Content'
+// import Content from './components/Content'
+import InfiniteTabList from "./components/InfiniteList";
 import Footer from './components/Footer'
 
 export const App:React.FC = () => {
@@ -32,7 +33,7 @@ export const App:React.FC = () => {
     return (
         <Layout style = {{position: "relative", height: "100%"}}>
             <Header/>
-            <Content messages={messages} msgRef={msgRef}/>
+            <InfiniteTabList data={messages}/>
             <Footer onChange={onChange} input={input} socket={socket} />
         </Layout>
     )

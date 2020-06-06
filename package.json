@@ -6,12 +6,12 @@
   "author": "someSOAP",
   "license": "ISC",
   "scripts": {
-    "start":      "ts-node server/index.ts",
-    "dev":        "npm run dev:server && npm run dev:front",
+    "start": "ts-node server/index.ts",
+    "dev": "npm run dev:server && npm run dev:front",
     "dev:server": "nodemon --exec \"npm start\" --watch server",
-    "dev:front":  "nodemon --exec \"npm run build:dev\" --watch front",
-    "build:dev":  "webpack --config webpack.config.js --mode=development",
-    "buidl":      "webpack --config webpack.config.js --mode=production"
+    "dev:front": "nodemon --exec \"npm run build:dev\" --watch front",
+    "build:dev": "webpack --config webpack.config.js --mode=development",
+    "buidl": "webpack --config webpack.config.js --mode=production"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "express-ws": "^4.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-window": "^1.8.5",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^4.2.0",
     "typeorm": "^0.2.25"
