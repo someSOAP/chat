@@ -2,9 +2,14 @@ import React from "react";
 import { ResizableListContext } from "./ResizableList";
 import { Comment } from "antd";
 
-const ResizableMessage = ({ text, title, index }) => {
+interface ResizableMessageProps {
+    text: string,
+    title: string,
+    index: number
+}
 
-    // @ts-ignore
+const ResizableMessage:React.FC<ResizableMessageProps> = ({ text, title, index }) => {
+
     const {setSize, windowWidth} = React.useContext(ResizableListContext);
     const root = React.useRef(null);
 

@@ -1,38 +1,36 @@
 import * as React from "react";
 import ResizableList from "./ResizableList";
-
-const { useEffect, useRef, useState } = React;
-
-const InfiniteTabList  = ({data}) => {
-
-    const listRef          = useRef(null);
-    const resizableListRef = useRef(null);
-
-    const [listHeight, setListHeight] = useState(0);
+import {Layout} from 'antd';
 
 
-    useEffect(() => {
+const Content  = ({data, listRef}) => {
+
+    const resizableListRef = React.useRef(null);
+
+    const [listHeight, setListHeight] = React.useState(0);
+
+    React.useEffect(() => {
         setListHeight(resizableListRef.current.offsetHeight);
     });
 
-    useEffect(() => {
+    React.useEffect(() => {
         if(!!listRef.current){
             listRef.current.resetAfterIndex(0);
         }
     });
 
     return (
-        <div style={{flex: 1, position: 'relative'}}>
+        <Layout.Content style={{height: "100%", position: 'relative'}}>
             <ResizableList
                 resizableListRef = {resizableListRef}
                 listRef          = {listRef}
                 listHeight       = {listHeight}
                 data             = {data}
             />
-        </div>
+        </Layout.Content>
     )
 
 };
 
 
-export default InfiniteTabList;
+export default Content;

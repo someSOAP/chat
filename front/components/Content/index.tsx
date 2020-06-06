@@ -1,6 +1,6 @@
-import InfiniteTabList from "./InfiniteList";
+import Content from "./Content";
 
-import {useLayoutEffect, useState} from "react";
+import { useLayoutEffect, useState } from "react";
 
 export const useWindowSize = () => {
     let [size, setSize] = useState([0, 0]);
@@ -15,4 +15,4 @@ export const useWindowSize = () => {
     return size;
 };
 
-export default InfiniteTabList;
+export default Content;

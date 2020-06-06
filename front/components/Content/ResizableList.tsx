@@ -1,11 +1,9 @@
-import React from "react";
+import * as React from "react";
 import { VariableSizeList as List } from "react-window";
 import ResizableMessage from "./ResizableMessage";
 import { useWindowSize } from "./index";
 
-
-export const ResizableListContext = React.createContext({});
-
+export const ResizableListContext = React.createContext(null);
 
 const ResizableList = ({listHeight, resizableListRef, listRef, data = []}) => {
     const sizeMap = React.useRef({});
