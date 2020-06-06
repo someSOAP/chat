@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Input, Layout} from "antd";
+import { Input, Layout } from "antd";
 
 const { Footer } = Layout ;
 
@@ -9,7 +9,7 @@ export interface AppContentProps {
     input: string
 }
 
-export const AppContent = ({socket, onChange, input} : AppContentProps) => {
+export const AppContent : React.FC<AppContentProps> = ({socket, onChange, input}) => {
     return (
         <Footer style={{ width: '100%' }}>
             <Input
@@ -18,7 +18,7 @@ export const AppContent = ({socket, onChange, input} : AppContentProps) => {
                 }}
                 value={input}
                 onPressEnter = {()=>{
-                    socket.send(JSON.stringify({title: "Name", text: input }));
+                    socket.send(JSON.stringify({title: "Name", text: input}));
                 }}
             />
         </Footer>

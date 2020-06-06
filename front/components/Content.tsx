@@ -1,10 +1,15 @@
 import * as React from "react";
-import {Layout} from "antd";
+import { Layout } from "antd";
 import Message from "./Message";
 
 const { Content } = Layout ;
 
-export const AppContent = ({messages, msgRef}) => {
+interface AppContentProps {
+    messages: Array<any>,
+    msgRef: React.Ref<HTMLDivElement>
+}
+
+export const AppContent:React.FC<AppContentProps> = ({messages, msgRef}) => {
     return (
         <Content style={{height: "100%", overflow: "auto"}} >
             {

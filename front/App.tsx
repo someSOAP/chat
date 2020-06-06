@@ -4,12 +4,17 @@ import Header from './components/Header'
 import Content from './components/Content'
 import Footer from './components/Footer'
 
-export const App = () => {
+export const App:React.FC = () => {
     const socket : WebSocket = React.useMemo(() : WebSocket => new WebSocket(`ws://${process.env.URL_API}/chat`), []);
 
     const [messages, setMessages] = React.useState([]);
     const [input, onChange] = React.useState("");
-    const msgRef = React.useRef<HTMLDivElement>(null);
+    const msgRef : React.Ref<HTMLDivElement> = React.useRef<HTMLDivElement>(null);
+
+    socket.onmessage = ({data}) => {
+        setMessages([...messages, JSON.parse(data)]);
+    };
+
     React.useEffect(()=>{
         fetch('messages')
             .then(res=>res.json())
@@ -17,10 +22,11 @@ export const App = () => {
 
     }, []);
 
-    socket.addEventListener('message', ({data}) => {
-        setMessages([...messages, JSON.parse(data)]);
-        msgRef.current.scrollIntoView();
-    });
+    React.useEffect(()=>{
+        if(msgRef.current){
+            msgRef.current.scrollIntoView();
+        }
+    }, [messages]);
 
 
     return (

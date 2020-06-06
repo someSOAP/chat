@@ -7,7 +7,7 @@ export interface MessageProps {
     msgRef:   React.Ref<HTMLDivElement>
 }
 
-export const Message = ({text, title, msgRef}: MessageProps) => {
+export const Message:React.FC<MessageProps> = ({text, title, msgRef}) => {
     return (
         <Comment
             author={<h5>{title}</h5>}
@@ -18,4 +18,4 @@ export const Message = ({text, title, msgRef}: MessageProps) => {
     )
 };
 
-export default Message;
+export default React.memo(Message);
