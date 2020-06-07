@@ -9,6 +9,9 @@ export class Message {
     @Column()
     title: string;
 
-    @Column("text")
+    @Column()
     text: string;
+
+    @Column({default: ()=> `'${new Date().toISOString()}'`})
+    dateString: string;
 }

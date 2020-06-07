@@ -3,10 +3,10 @@ import { Message } from "../entity/Message";
 
 export const saveMessage = async (msg: string) => {
     const message = JSON.parse(msg);
-    const postRepository = getManager().getRepository(Message);
-    const newPost = postRepository.create(message);
-    await postRepository.save(newPost);
-    return newPost;
+    const msgRepository = getManager().getRepository(Message);
+    const newMsg = msgRepository.create(message);
+    await msgRepository.save(newMsg);
+    return newMsg;
 };
 
 export const getAllMessages = async () => {

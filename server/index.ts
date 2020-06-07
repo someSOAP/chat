@@ -40,19 +40,6 @@ createConnection().then(async () => {
 
     const router = express.Router() as expressWs.Router;
 
-    router.ws(
-        '/:id',
-        (ws, req, next) => { next(); },
-        (ws, req) => {
-            ws.send(req.params.id);
-
-            ws.on('close', (code, reason) => {
-                console.log('code:', code);
-                console.log('reason:', reason);
-            });
-        }
-    );
-
 
     app.get("/", (req, res) => {
         const indexFile = path.resolve(
@@ -74,6 +61,6 @@ createConnection().then(async () => {
     const IP = ip.address();
     const PORT = process.env.PORT || 3000;
     app.listen(PORT);
-    console.log(`Chat avaliable by link http://${IP}:${PORT} `);
+    console.log(`Chat available by link http://${IP}:${PORT} `);
 
 }).catch(error => console.log("TypeORM connection error: ", error));

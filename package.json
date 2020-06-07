@@ -11,7 +11,8 @@
     "dev:server": "nodemon --exec \"npm start\" --watch server",
     "dev:front": "nodemon --exec \"npm run build:dev\" --watch front",
     "build:dev": "webpack --config webpack.config.js --mode=development",
-    "buidl": "webpack --config webpack.config.js --mode=production"
+    "buidl": "webpack --config webpack.config.js --mode=production",
+    "tsc": "tsc"
   },
   "repository": {
     "type": "git",

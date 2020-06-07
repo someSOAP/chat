@@ -27,7 +27,8 @@ module.exports = (env) => {
             new webpack.EnvironmentPlugin({
                 NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
                 DEBUG: false,
-                URL_API: `${ip.address()}:${process.env.PORT}`
+                IP: ip.address(),
+                CHAT_WS: `ws://${ip.address()}:${process.env.PORT}/chat`
             })
         ],
 

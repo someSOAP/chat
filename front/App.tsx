@@ -5,11 +5,11 @@ import Content from "./components/Content";
 import Footer from './components/Footer';
 
 export const App:React.FC = () => {
-    const socket : WebSocket = React.useMemo(() : WebSocket => new WebSocket(`ws://${process.env.URL_API}/chat`), []);
+    const socket : WebSocket = React.useMemo(() : WebSocket => new WebSocket(process.env.CHAT_WS), []);
 
     const [messages, setMessages] = React.useState([]);
-    const [input, onChange] = React.useState("");
-    const listRef          = React.useRef(null);
+    const [input, onChange]       = React.useState("");
+    const listRef                 = React.useRef(null);
 
     socket.onmessage = ({data}) => {
         setMessages([...messages, JSON.parse(data)]);
