@@ -5,10 +5,11 @@ import { Comment } from "antd";
 interface ResizableMessageProps {
     text: string,
     title: string,
-    index: number
+    index: number,
+    dateString: string,
 }
 
-const ResizableMessage:React.FC<ResizableMessageProps> = ({ text, title, index }) => {
+const ResizableMessage:React.FC<ResizableMessageProps> = ({ text, title, dateString, index }) => {
 
     const {setSize, windowWidth} = React.useContext(ResizableListContext);
     const root = React.useRef(null);
@@ -17,12 +18,17 @@ const ResizableMessage:React.FC<ResizableMessageProps> = ({ text, title, index }
         setSize(index, root.current.getBoundingClientRect().height);
     }, [windowWidth]);
 
+    const datetime = new Date(dateString);
+
     return (
         <div ref={root}>
             <Comment
-                author={<h5>{title}</h5>}
-                content={
+                author = {<h4>{title}</h4>}
+                content = {
                     <p>{text}</p>
+                }
+                datetime = {
+                    `${datetime.toLocaleDateString()} ${datetime.toLocaleTimeString()}`
                 }
             />
         </div>

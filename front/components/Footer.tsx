@@ -11,8 +11,10 @@ export interface AppContentProps {
 
 export const AppContent : React.FC<AppContentProps> = ({socket, onChange, input}) => {
     const sendMessage = () => {
-        socket.send(JSON.stringify({title: "Name", text: input}));
-        onChange("");
+        if(input) {
+            socket.send(JSON.stringify({title: "Name", text: input}));
+            onChange("");
+        }
     };
 
     return (

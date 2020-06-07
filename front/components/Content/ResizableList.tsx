@@ -36,10 +36,10 @@ const ResizableList = ({listHeight, resizableListRef, listRef, data = []}) => {
                 >
                     {
                         ({index, style}) => {
-                            const {title, text} = data[index];
+                            const {title, text, dateString} = data[index];
                             return (
                                 <div style={style}>
-                                    <ResizableMessage title={title} text={text} index={index}/>
+                                    <ResizableMessage title={title} text={text} dateString={dateString} index={index}/>
                                 </div>
                             )
                         }
