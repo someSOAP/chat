@@ -2,11 +2,10 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import 'antd/dist/antd.css';
-import './style.css';
 
-import { App } from "./App";
+import Register from "./Register";
 
 ReactDOM.render(
-    <App/>,
+    <Register/>,
     document.getElementById("root")
 );

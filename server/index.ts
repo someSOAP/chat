@@ -7,7 +7,7 @@ import expressWs from 'express-ws';
 import { saveMessage, getAllMessages } from './controller/MessageController'
 import * as path from "path";
 import * as fs from "fs";
-
+import { createPageRoute } from './controller'
 
 createConnection().then(async () => {
 
@@ -41,18 +41,13 @@ createConnection().then(async () => {
     const router = express.Router() as expressWs.Router;
 
 
-    app.get("/", (req, res) => {
-        const indexFile = path.resolve(
-            __dirname,
-            "../front/index.html"
-        );
+    app.get("/", createPageRoute('chat'));
 
-        fs.readFile(indexFile, "utf8", (err, data) => {
-            return res.send(data);
-        });
+    app.get("/login", createPageRoute('login'));
+    app.post("/login", (req, res)=>{
+        console.log(req);
+        console.log(res);
     });
-
-
 
     app.use(router);
     app.use('/static', express.static( path.resolve(__dirname, '../dist')));

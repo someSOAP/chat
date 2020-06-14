@@ -16,7 +16,9 @@ module.exports = (env) => {
         },
 
         entry: {
-            main: './front/index.tsx',
+            chat:     './front/chat/index.tsx',
+            login:    './front/login/index.tsx',
+            register: './front/register/index.tsx',
         },
         output: {
             filename: '[name].js',

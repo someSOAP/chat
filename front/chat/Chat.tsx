@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Content from "./components/Content";
 import Footer from './components/Footer';
 
-export const App:React.FC = () => {
+const Chat : React.FC = () => {
     const socket : WebSocket = React.useMemo(() : WebSocket => new WebSocket(process.env.CHAT_WS), []);
 
     const [messages, setMessages] = React.useState([]);
@@ -35,3 +35,5 @@ export const App:React.FC = () => {
         </Layout>
     )
 };
+
+export default Chat;
