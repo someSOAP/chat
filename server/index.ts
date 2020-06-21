@@ -42,14 +42,6 @@ createConnection().then(async () => {
     app.use(methodOverride('_method'));
     applyTo(express.Router());
 
-    getWss().clients.forEach(ws => {
-        if (ws.readyState !== ws.OPEN) {
-            ws.terminate();
-            return;
-        }
-        ws.ping();
-    });
-
     app.ws('/chat', ws => {
         ws.on('message', async (msg) => {
             const res = await saveMessage(msg);
