@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity()
-export class Message {
+class Message {
 
     @PrimaryGeneratedColumn()
     id: number;
@@ -15,3 +15,5 @@ export class Message {
     @Column({default: ()=> `'${new Date().toISOString()}'`})
     dateString: string;
 }
+
+export default Message;

@@ -1,5 +1,5 @@
 import { getManager } from "typeorm";
-import { Message } from "../entity/Message";
+import Message from "../entity/Message";
 
 export const saveMessage = async (msg: string) => {
     const message = JSON.parse(msg);
@@ -12,6 +12,8 @@ export const saveMessage = async (msg: string) => {
 };
 
 export const getAllMessages = async () => {
-    const postRepository = getManager().getRepository(Message);
-    return postRepository.find();
+    const msgRepository = getManager().getRepository(Message);
+    return msgRepository.find();
 };
+
+
