@@ -43,6 +43,7 @@ createConnection().then(async () => {
     applyTo(express.Router());
 
     app.ws('/chat', ws => {
+
         ws.on('message', async (msg) => {
             const res = await saveMessage(msg);
             getWss().clients.forEach(client => {
@@ -79,7 +80,7 @@ createConnection().then(async () => {
 
     // run app
     const IP = ip.address();
-    const PORT = process.env.PORT || 3000;
+    const PORT = process.env.PORT || 80;
     app.listen(PORT);
     console.log(`Chat available by link http://${IP}:${PORT} `);
 

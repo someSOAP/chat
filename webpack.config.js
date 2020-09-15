@@ -6,6 +6,8 @@ const ip = require("ip");
 
 module.exports = (env) => {
 
+    const ipAddress = ip.address();
+
     return {
         // Enable sourcemaps for debugging webpack's output.
         devtool: "source-map",
@@ -29,8 +31,8 @@ module.exports = (env) => {
             new webpack.EnvironmentPlugin({
                 NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
                 DEBUG: false,
-                IP: ip.address(),
-                CHAT_WS: `ws://${ip.address()}:${process.env.PORT}/chat`
+                IP: ipAddress,
+                CHAT_WS: `ws://${ipAddress}:${process.env.PORT}/chat`
             })
         ],
 
