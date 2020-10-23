@@ -3,7 +3,7 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { postAuth } from "../utils";
 
-const LoginForm = () => {
+const LoginForm : React.FC = () => {
     const [form] = Form.useForm();
 
     return (
@@ -16,11 +16,11 @@ const LoginForm = () => {
                     const params = new URLSearchParams();
                     params.append("username", data.username);
                     params.append("password", data.password);
-                    postAuth('/login', params);
+                    postAuth('login', params);
                 }}
 
                 method="POST"
-                action="/login"
+                action="login"
             >
                 <Form.Item
                     name="username"
@@ -52,7 +52,7 @@ const LoginForm = () => {
                     <Button type="primary" htmlType="submit" className="login-form-button">
                         Log in
                     </Button>
-                    Or <a href="">register now!</a>
+                    Or <a href="/auth/register">register now!</a>
                 </Form.Item>
             </Form>
         </>

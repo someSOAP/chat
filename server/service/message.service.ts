@@ -1,5 +1,5 @@
 import { getManager } from "typeorm";
-import Message from "../entity/Message";
+import Message from "../model/Message";
 
 export const saveMessage = async (msg: string) => {
     const message = JSON.parse(msg);

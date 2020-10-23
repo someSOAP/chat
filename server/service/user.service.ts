@@ -1,9 +1,9 @@
 import { getManager } from "typeorm";
-import User from "../entity/User";
+import User from "../model/User";
 import bcrypt from 'bcrypt';
 
 export const createUser = async (username : string, password: string) => {
-    if(username  && password){
+    if (username  && password) {
         const hashedPassword = await bcrypt.hash(password, 10);
         const userRepository = getManager().getRepository(User);
         const user = {

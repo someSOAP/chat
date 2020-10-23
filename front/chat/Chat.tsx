@@ -16,7 +16,7 @@ const Chat : React.FC = () => {
     };
 
     React.useEffect(()=>{
-        fetch('messages')
+        fetch('/chat/messages')
             .then(res=>res.json())
             .then(setMessages);
     }, []);

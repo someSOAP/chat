@@ -1,4 +1,4 @@
-export const postAuth = async (url: string = '', data) => {
+export const postAuth = async (url: string = '', data : URLSearchParams) => {
     // Default options are marked with *
     try {
         const response = await fetch(url, {

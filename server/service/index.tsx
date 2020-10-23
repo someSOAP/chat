@@ -12,7 +12,7 @@ export const createPageRoute = (pageName : string) => (req : Request, res : Resp
         return res.send(
             data.replace(
                 '<!--script-->',
-                `<script src="./static/${pageName}.js"></script>`
+                `<script src="/static/${pageName}.js"></script>`
             )
         );
     });

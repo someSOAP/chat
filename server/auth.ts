@@ -2,7 +2,8 @@ import bcrypt from 'bcrypt';
 import passportLocal from 'passport-local';
 
 const LocalStrategy = passportLocal.Strategy;
-const LOGIN_PAGE : string = '/login';
+const LOGIN_PAGE : string = '/auth/login';
+const ROOT_PAGE : string = '/';
 
 export const checkAuthenticated = (req, res, next) => {
     if(req.isAuthenticated()){
@@ -13,7 +14,7 @@ export const checkAuthenticated = (req, res, next) => {
 
 export const checkNotAuthenticated = (req, res, next) => {
     if(req.isAuthenticated()){
-        res.redirect('/');
+        res.redirect(ROOT_PAGE);
     }
     return next();
 };
@@ -25,7 +26,7 @@ export const logout = (req, res)=> {
 
 
 
-const initialize = async (passport, getUserByUsername, getUserById) => {
+const initializePassport = async (passport, getUserByUsername, getUserById) => {
     const authenticateUser = async (email, password, done) => {
         const user = await getUserByUsername(email);
         if(user == null) {
@@ -51,4 +52,4 @@ const initialize = async (passport, getUserByUsername, getUserById) => {
     });
 };
 
-export default initialize;
+export default initializePassport;

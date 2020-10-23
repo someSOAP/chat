@@ -15,10 +15,10 @@ const RegisterForm = () => {
                     const params = new URLSearchParams();
                     params.append("username", data.username);
                     params.append("password", data.password);
-                    postAuth('/register', params);
+                    postAuth('/auth/register', params);
                 }}
                 method="POST"
-                action="/register"
+                action="/auth/register"
             >
                 <Form.Item
                     name="username"

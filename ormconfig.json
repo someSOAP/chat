@@ -7,7 +7,7 @@
   "password": "test",
   "synchronize": true,
   "entities": [
-    "server/entity/*.js"
+    "server/model/*.js"
   ],
   "subscribers": [
     "server/subscriber/*.ts"
